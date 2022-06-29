@@ -3,16 +3,14 @@ import axios from "axios";
 import {addTodoList} from "./redux/reducer";
 import {Todos, TodosList} from "./types";
 
-export const updateData = (data: TodosList) => {
+export const updateData = (data: TodosList) =>
   axios
-    .put(`https://62b5c53ada3017eabb223233.mockapi.io/api/todos/1`, {
+    .put(`${import.meta.env.VITE_MOCKAPI_ENDPOINT}/1`, {
       ...data,
     })
-    .then()
     .catch(function (error) {
       console.log(error);
     });
-};
 
 export const getData = (
   dispatch: ThunkDispatch<
@@ -25,7 +23,7 @@ export const getData = (
     Dispatch<AnyAction>
 ) => {
   axios
-    .get("https://62b5c53ada3017eabb223233.mockapi.io/api/todos")
+    .get(`${import.meta.env.VITE_MOCKAPI_ENDPOINT}`)
     .then(function (response) {
       response.data[0].todosList.forEach((todos: Todos) => {
         dispatch(addTodoList(todos));
