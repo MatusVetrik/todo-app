@@ -6,7 +6,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import React from "react";
-import {Filter} from "../TodoCard";
+import {Filter} from "../../../../types";
 
 interface Props {
   filter: Filter;

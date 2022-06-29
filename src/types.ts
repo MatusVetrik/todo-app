@@ -19,3 +19,5 @@ export interface TodosList {
 export interface TodosResponse extends TodosList {
   id: number;
 }
+
+export type Filter = "All" | "Completed" | "Active";
