@@ -14,9 +14,8 @@ interface Props {
 }
 
 export const TodoFilter = ({filter, setFilter}: Props) => {
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: SelectChangeEvent) =>
     setFilter(event.target.value as Filter);
-  };
 
   return (
     <FormControl sx={{width: "40%", m: 1}}>

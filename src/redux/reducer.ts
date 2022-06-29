@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {findIndexOfItem, findIndexOfList, getUniqueData} from "../helper";
+import {findIndexOfItem, findIndexOfList, getUniqueData} from "./helper";
 import {updateData} from "../server";
 import {Todo, Todos, TodosList} from "../types";
 

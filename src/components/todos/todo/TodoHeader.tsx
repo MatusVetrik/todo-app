@@ -29,13 +29,13 @@ const TodoHeader = ({todoList}: Props) => {
       <Button
         size="small"
         sx={{color: "#d1231d"}}
-        onClick={() => {
+        onClick={() =>
           dispatch(
             deleteTodoList({
               listId: todoList?.id!,
             })
-          );
-        }}
+          )
+        }
       >
         Delete
       </Button>

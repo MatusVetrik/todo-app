@@ -1,5 +1,4 @@
 import {ThemeProvider} from "@emotion/react";
-import {createTheme} from "@mui/material";
 import ReactDOM from "react-dom/client";
 import {Provider} from "react-redux";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
@@ -9,17 +8,7 @@ import {TodoListForm} from "./components/forms/TodoListForm";
 import Header from "./components/UI/Header";
 import "./index.css";
 import {store} from "./redux/store";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#7D4CDB",
-    },
-    secondary: {
-      main: "#F8F8F8",
-    },
-  },
-});
+import {theme} from "./theme";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -30,7 +19,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             path="/todos"
             element={
               <>
-                <Header />
                 <App />
               </>
             }
@@ -39,7 +27,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             path="/"
             element={
               <>
-                <Header />
                 <TodoListForm />
               </>
             }

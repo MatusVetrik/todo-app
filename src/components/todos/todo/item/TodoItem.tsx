@@ -30,7 +30,7 @@ const TodoItem = ({id, title, text, deadline, listId}: Props) => {
   const handleChange = (
     e: React.SyntheticEvent<Element, Event>,
     checked: boolean
-  ) => {
+  ) =>
     dispatch(
       setItemCompleted({
         listId: listId,
@@ -38,7 +38,7 @@ const TodoItem = ({id, title, text, deadline, listId}: Props) => {
         status: checked,
       })
     );
-  };
+
   return (
     <Card sx={{maxWidth: "80%", m: 1.5, background: "#c2abdb", boxShadow: 1}}>
       <ItemContent text={text} title={title} deadline={deadline} />
