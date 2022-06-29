@@ -1,21 +1,21 @@
-import {useState} from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import {Grid} from "@mui/material";
+import {useEffect} from "react";
+import {TodoListForm} from "./components/forms/TodoListForm";
+import TodosList from "./components/todos/TodosList";
+import {getData, postData} from "./server";
+import {useAppDispatch, useAppSelector} from "./redux/hooks";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const todos = useAppSelector((state) => state.todosListReducer.todosList);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    getData(dispatch);
+  }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-      </header>
+      <TodosList />
     </div>
   );
 }
