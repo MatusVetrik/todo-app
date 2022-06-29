@@ -5,7 +5,6 @@ import {
   FormControlLabel,
   Switch,
 } from "@mui/material";
-
 import {useAppDispatch, useAppSelector} from "../../../../redux/hooks";
 import {
   deleteItemFromTodoList,
