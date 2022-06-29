@@ -3,17 +3,6 @@ import axios from "axios";
 import {addTodoList} from "./redux/reducer";
 import {Todos, TodosList} from "./types";
 
-export const postData = () => {
-  axios
-    .post("https://62b5c53ada3017eabb223233.mockapi.io/api/todos", {
-      todosList: [],
-    })
-    .then()
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-
 export const updateData = (data: TodosList) => {
   axios
     .put(`https://62b5c53ada3017eabb223233.mockapi.io/api/todos/1`, {
