@@ -27,12 +27,15 @@ const TodoItem = ({id, title, text, deadline, listId}: Props) => {
         ?.todos.find((todo) => todo.id == id)?.completed
   );
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: React.SyntheticEvent<Element, Event>,
+    checked: boolean
+  ) => {
     dispatch(
       setItemCompleted({
         listId: listId,
         todoId: id,
-        status: e.target.checked!,
+        status: checked,
       })
     );
   };
