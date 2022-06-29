@@ -1,31 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {findIndexOfItem, findIndexOfList, getUniqueData} from "../helper";
-import {postData, updateData} from "../server";
+import {updateData} from "../server";
 import {Todo, Todos, TodosList} from "../types";
 
 const initialState: TodosList = {
-  todosList: [
-    // {
-    //   id: 1,
-    //   name: "Todo list 1",
-    //   todos: [
-    //     {
-    //       id: 2,
-    //       title: "Title",
-    //       text: "text",
-    //       deadline: "2010-04-02T14:12:07",
-    //       completed: true,
-    //     },
-    //     {
-    //       id: 3,
-    //       title: "Title",
-    //       text: "text",
-    //       deadline: "2010-04-02T14:12:07",
-    //       completed: true,
-    //     },
-    //   ],
-    // },
-  ],
+  todosList: [],
 };
 
 export const todosListReducer = createSlice({
@@ -63,6 +42,18 @@ export const todosListReducer = createSlice({
       updateData(state);
     },
 
+    deleteTodoList: (
+      state: TodosList,
+      action: PayloadAction<{listId: number}>
+    ) => {
+      const updatedListOfTodos = state.todosList.filter(
+        (list) => list.id !== action.payload.listId
+      );
+
+      state.todosList = updatedListOfTodos;
+      updateData(state);
+    },
+
     setItemCompleted: (
       state: TodosList,
       action: PayloadAction<{listId: number; todoId: number; status: boolean}>
@@ -86,6 +77,7 @@ export const {
   addTodoList,
   addItemToTodoList,
   deleteItemFromTodoList,
+  deleteTodoList,
   setItemCompleted,
 } = todosListReducer.actions;
 

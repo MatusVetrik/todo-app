@@ -1,16 +1,24 @@
-import {Card, CardActions, CardContent, Grid, Typography} from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Typography,
+} from "@mui/material";
 import {useState} from "react";
-import {Todo, Todos} from "../../../types";
+import {useAppDispatch} from "../../../redux/hooks";
+import {deleteTodoList} from "../../../redux/reducer";
+import {Todo, Todos, Filter} from "../../../types";
 import {TodoItemForm} from "../../forms/TodoItemForm";
+import TodosList from "../TodosList";
 import {TodoFilter} from "./inputs/TodoFilter";
-import TodoItem from "./item/TodoItem";
 import TodoSearch from "./inputs/TodoSearch";
+import TodoItem from "./item/TodoItem";
 
 interface Props {
   todoList: Todos | null;
 }
-
-export type Filter = "All" | "Completed" | "Active";
 
 export const TodoCard = ({todoList}: Props) => {
   const options = todoList?.todos?.map((todo) => todo.title);
@@ -18,6 +26,8 @@ export const TodoCard = ({todoList}: Props) => {
   const [filter, setFilter] = useState<Filter>("All");
 
   const [searchedTodo, setsearchedTodo] = useState<string>("");
+
+  const dispatch = useAppDispatch();
 
   const todoItem = (todo: Todo, listId: number) => (
     <TodoItem
@@ -34,14 +44,34 @@ export const TodoCard = ({todoList}: Props) => {
   return (
     <Card sx={{maxWidth: "100%", m: 2, p: 2, boxShadow: 3}}>
       <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          sx={{m: 1, fontWeight: "bold"}}
+        <Grid
+          container
+          alignItems="center"
+          direction="row"
+          justifyContent="space-between"
         >
-          {todoList?.name}
-        </Typography>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            sx={{m: 1, fontWeight: "bold"}}
+          >
+            {todoList?.name}
+          </Typography>
+          <Button
+            size="small"
+            sx={{color: "#d1231d"}}
+            onClick={() => {
+              dispatch(
+                deleteTodoList({
+                  listId: todoList?.id!,
+                })
+              );
+            }}
+          >
+            Delete
+          </Button>
+        </Grid>
         <Grid
           container
           alignItems="center"
