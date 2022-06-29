@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  Box,
-  createTheme,
-  ThemeProvider,
-  Typography,
-} from "@mui/material";
+import {AppBar, Box, Typography} from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import NavBar from "./NavBar";
 

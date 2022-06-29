@@ -1,6 +1,5 @@
 import {ThemeProvider} from "@emotion/react";
 import {createTheme} from "@mui/material";
-import React from "react";
 import ReactDOM from "react-dom/client";
 import {Provider} from "react-redux";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
